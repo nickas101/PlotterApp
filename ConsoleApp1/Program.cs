@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string output = FileRead.Read();
+            string output = FileReader.Read();
 
             //Console.WriteLine(output);
 
