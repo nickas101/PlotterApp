@@ -10,7 +10,7 @@ namespace Parser
     {
         public static string Parse(string[] lines)
         {
-            Plotter.Plot(lines);
+            //Plotter.Plot(lines);
 
             return "Hi from parser";
         }
