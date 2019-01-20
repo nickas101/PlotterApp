@@ -8,7 +8,7 @@ using System.IO;
 
 namespace ConsoleApp1
 {
-    class FileRead
+    class FileReader
     {
        public static string Read()
         {
