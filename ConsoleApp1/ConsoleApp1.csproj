@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileRead.cs" />
+    <Compile Include="FileReader.cs" />
+    <Compile Include="Plotter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,9 +52,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plotter1\Plotter1.csproj">
-      <Project>{69f57c1a-e6aa-46fc-bacd-3e56da59b94e}</Project>
-      <Name>Plotter1</Name>
+    <ProjectReference Include="..\Parser\Parser.csproj">
+      <Project>{002c8b09-0c00-40f2-9cb5-bedfda936cd6}</Project>
+      <Name>Parser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

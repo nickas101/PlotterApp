@@ -10,7 +10,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string output = FileReader.Read();
+            string plot = FileReader.Read();
+
+            // call plotter and pass him plot
 
             //Console.WriteLine(output);
 

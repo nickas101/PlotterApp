@@ -17,7 +17,7 @@ namespace ConsoleApp1
 
             readEveryLine = File.ReadAllLines(pathToFile);
 
-            Plotter1.Parser.Parse(readEveryLine);
+            Parser.Parser.Parse(readEveryLine);
 
             //for (int i = 0; i < readEveryLine.Length; i++)
             //Console.Write(readEveryLine[i] + " | ");
