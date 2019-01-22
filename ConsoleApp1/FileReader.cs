@@ -10,23 +10,17 @@ namespace ConsoleApp1
 {
     class FileReader
     {
-       public static string Read()
+       public static string[] Read()
         {
             string pathToFile = "D:\\5524.txt";
             string[] readEveryLine = new string[5];
 
             readEveryLine = File.ReadAllLines(pathToFile);
 
-            Parser.Parser.Parse(readEveryLine);
-
             //for (int i = 0; i < readEveryLine.Length; i++)
             //Console.Write(readEveryLine[i] + " | ");
 
-            return readEveryLine[8];
-
-            //return Plotter1.Plotter.Plot();
-
-            //return "Hi from method";
+            return readEveryLine;
         }
     }
 }
