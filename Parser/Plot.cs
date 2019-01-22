@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parser
 {
-    class Plot
+    public class Plot
     {
         private int x;
         private int y;
