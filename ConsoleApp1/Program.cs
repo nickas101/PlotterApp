@@ -16,7 +16,7 @@ namespace ConsoleApp1
 
             //Console.WriteLine(output);
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
