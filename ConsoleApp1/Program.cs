@@ -10,12 +10,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string plot = FileReader.Read();
+            string[] allLines = FileReader.Read();
 
-            // call plotter and pass him plot
+            Parser.Plot plot = Parser.Parser.Parse(allLines);
 
-            //Console.WriteLine(output);
+            Plotter.DrowPlot(plot);
 
+            //Console.WriteLine(plot.Y);
             //Console.ReadKey();
         }
     }
