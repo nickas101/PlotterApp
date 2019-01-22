@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Plotter
+    public class Plotter
     {
+        public static void DrowPlot(Parser.Plot plot)
+        {
+            Console.WriteLine(plot.Y);
+
+            Console.ReadKey();
+        }
     }
 }
