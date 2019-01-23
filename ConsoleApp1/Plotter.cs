@@ -37,22 +37,33 @@ namespace ConsoleApp1
                 ChartType = SeriesChartType.Line
             };
 
+            Series series2 = new Series()
+            {
+                Name = "series3",
+                IsVisibleInLegend = false,
+                ChartType = SeriesChartType.Line
+            };
+
             chart.Series.Add(series);
+            chart.Series.Add(series2);
 
             foreach (string item in items)
             {
                  //DataPoint p1 = new DataPoint(0, Double.Parse(item.Kurz));
                  DataPoint p1 = new DataPoint(0, Double.Parse(item));
-                 p1.Color = System.Drawing.Color.Blue;
-                 //p1.AxisLabel = item.Kod;
-                 //p1.LegendText = item.Kod;
+                DataPoint p2 = new DataPoint(0, Double.Parse("0"));
+                p1.Color = System.Drawing.Color.Blue;
+                p2.Color = System.Drawing.Color.LightBlue;
+                //p1.AxisLabel = item.Kod;
+                //p1.LegendText = item.Kod;
                 // p1.Label = item.Kurz;
 
-                 p1.AxisLabel = "Axis";
+                p1.AxisLabel = "Axis";
                  p1.LegendText = "Legend";
                  //p1.Label = "Label";
 
                 series.Points.Add(p1);
+                series2.Points.Add(p2);
 
             }
 
