@@ -16,7 +16,7 @@ namespace ConsoleApp1
 
             //Console.ReadKey();
 
-            string[] items = { "1", "2", "3", "4", "5", "6" };
+            string[] items = { "-3","-1","1", "2", "3", "4", "5", "6" };
 
             Chart chart = new Chart();
 
@@ -24,17 +24,17 @@ namespace ConsoleApp1
             ChartArea area = new ChartArea();
             chart.ChartAreas.Add(area);
 
-            chart.BackColor = System.Drawing.Color.Transparent;
+            chart.BackColor = System.Drawing.Color.White; // Was Transparent
             chart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
 
-            chart.ChartAreas[0].AxisX.Title = "sasdasdasd";
+            chart.ChartAreas[0].AxisX.Title = "Frequency over Temperature";
 
             Series series = new Series()
             {
                 Name = "series2",
                 IsVisibleInLegend = false,
-                ChartType = SeriesChartType.Column
+                ChartType = SeriesChartType.Line
             };
 
             chart.Series.Add(series);
@@ -43,14 +43,14 @@ namespace ConsoleApp1
             {
                  //DataPoint p1 = new DataPoint(0, Double.Parse(item.Kurz));
                  DataPoint p1 = new DataPoint(0, Double.Parse(item));
-                 p1.Color = System.Drawing.Color.LightBlue;
+                 p1.Color = System.Drawing.Color.Blue;
                  //p1.AxisLabel = item.Kod;
                  //p1.LegendText = item.Kod;
                 // p1.Label = item.Kurz;
 
                  p1.AxisLabel = "Axis";
                  p1.LegendText = "Legend";
-                 p1.Label = "Label";
+                 //p1.Label = "Label";
 
                 series.Points.Add(p1);
 
