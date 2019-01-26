@@ -8,10 +8,13 @@ namespace Parser
 {
     public class Plot
     {
-        private int x;
-        private int y;
+        private string[,] x; // temperature array
+        private string[,] y; // frequency array MHz
 
-        public int X
+        //private string[,] x = new string[50, 100]; // temperature array
+        //private string[,] y = new string[50, 100]; // frequency array
+
+        public string[,] X
         {
             get
             {
@@ -24,7 +27,7 @@ namespace Parser
             }
         }
 
-        public int Y
+        public string[,] Y
         {
             get
             {
@@ -37,7 +40,7 @@ namespace Parser
             }
         }
 
-        public Plot(int x, int y)
+        public Plot(string[,] x, string[,] y)
         {
             this.x = x;
             this.y = y;
