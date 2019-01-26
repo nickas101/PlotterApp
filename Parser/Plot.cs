@@ -11,9 +11,6 @@ namespace Parser
         private string[,] x; // temperature array
         private string[,] y; // frequency array MHz
 
-        //private string[,] x = new string[50, 100]; // temperature array
-        //private string[,] y = new string[50, 100]; // frequency array
-
         public string[,] X
         {
             get

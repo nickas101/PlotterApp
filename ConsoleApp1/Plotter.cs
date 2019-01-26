@@ -45,27 +45,68 @@ namespace ConsoleApp1
             };
 
             chart.Series.Add(series);
-            chart.Series.Add(series2);
+            //chart.Series.Add(series2);
 
-            foreach (string item in items)
+            for (int i = 0; i < plot.X.GetLength(1); i++)
             {
-                 //DataPoint p1 = new DataPoint(0, Double.Parse(item.Kurz));
-                 DataPoint p1 = new DataPoint(0, Double.Parse(item));
+
+                //DataPoint p1 = new DataPoint(0, Double.Parse(item.Kurz));
+                if (plot.Y[2, i] != null)
+                {
+                    DataPoint p1 = new DataPoint(0, Double.Parse(plot.Y[2, i]));
+                    p1.Color = System.Drawing.Color.Blue;
+                    p1.AxisLabel = plot.X[2, i];
+                    series.Points.Add(p1);
+                    p1.LegendText = "Legend";
+                }
+
                 DataPoint p2 = new DataPoint(0, Double.Parse("0"));
-                p1.Color = System.Drawing.Color.Blue;
+                
                 p2.Color = System.Drawing.Color.LightBlue;
                 //p1.AxisLabel = item.Kod;
                 //p1.LegendText = item.Kod;
                 // p1.Label = item.Kurz;
 
-                p1.AxisLabel = "Axis";
-                 p1.LegendText = "Legend";
-                 //p1.Label = "Label";
+                //p1.AxisLabel = "Axis";
+                
+                
+                //p1.Label = "Label";
 
-                series.Points.Add(p1);
+                
                 series2.Points.Add(p2);
 
+
+                //Console.Write(plot.Y[2, i] + "\n");
+                //Console.ReadKey();
+
             }
+
+            //Console.Write(plot.X[0, i].Length + "\n");
+            //Console.ReadKey();
+
+
+            //int i = 0;
+
+            //foreach (string item in plot.X[0,i])
+            //{
+            //     //DataPoint p1 = new DataPoint(0, Double.Parse(item.Kurz));
+            //     DataPoint p1 = new DataPoint(0, Double.Parse(item));
+            //    DataPoint p2 = new DataPoint(0, Double.Parse("0"));
+            //    p1.Color = System.Drawing.Color.Blue;
+            //    p2.Color = System.Drawing.Color.LightBlue;
+            //    //p1.AxisLabel = item.Kod;
+            //    //p1.LegendText = item.Kod;
+            //    // p1.Label = item.Kurz;
+
+            //    //p1.AxisLabel = "Axis";
+            //    p1.AxisLabel = item;
+            //    p1.LegendText = "Legend";
+            //     //p1.Label = "Label";
+
+            //    series.Points.Add(p1);
+            //    series2.Points.Add(p2);
+
+            //}
 
             string filename = "D:\\Chart.png";
             chart.SaveImage(filename, ChartImageFormat.Png);
