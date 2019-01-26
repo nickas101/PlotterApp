@@ -13,7 +13,13 @@ namespace Parser
             bool to_read = false;
             int unit = 0;
             int row = 0;
-            string[,] temp = new string[50,100]; // temperature array
+            string[,] temp = new string[50, 100]; // temperature array
+            string[,] freq = new string[50, 100]; // frequency array
+
+            //string[,] temp; // temperature array
+            //string[,] freq; // frequency array
+
+            //string[] xx = { "777", "888", "999", "555" };
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -31,7 +37,7 @@ namespace Parser
                     string[] word = words[3].Split(new char[] { ':' });
                     unit = int.Parse(word[1]);
                     row = 0;
-                    Console.Write(unit + "\n");
+                    //Console.Write(unit + "\n");
                 }
                     
 
@@ -41,10 +47,11 @@ namespace Parser
                 if (lines[i].Length > 0 && to_read == true)
                 {
                     string[] digs = lines[i].Split(new char[] { ' ' });
-                    temp[unit,row] = digs[0]; 
+                    temp[unit, row] = digs[0];
+                    freq[unit, row] = digs[3];
 
 
-                    Console.Write(temp[unit,row] + "\n");
+                    //Console.Write(temp[unit, row] + "\n");
 
                     row++;
                 }
@@ -52,12 +59,12 @@ namespace Parser
                 if (lines[i].Contains("(ppm/'C)") == true)
                     to_read = true;
 
-
             }
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
-            Plot thePlot = new Plot(1,2);
+
+            Plot thePlot = new Plot(temp, freq);
 
             return thePlot;
         }
