@@ -14,13 +14,21 @@ namespace ConsoleApp1
        public static string[] Read()
         {
             string[] readEveryLine = {};
-            string pathToFile;
+            string pathToFile = "";
 
             try
             {
                 string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-                pathToFile = File.ReadAllText(folder + "\\5524.txt");
+                pathToFile = folder + "\\5524.txt";
+
+                //pathToFile = File.ReadAllText(folder + "\\5524" + ".txt");
+                //\"[0-9][0-9][0-9][0-9]\" + \".txt\"
+
                 Console.WriteLine(pathToFile);
+
+                Console.Write("------\nPress any key to continue . .");
+                Console.ReadKey(true);
+
                 readEveryLine = File.ReadAllLines(pathToFile);
             }
             catch (Exception e)
