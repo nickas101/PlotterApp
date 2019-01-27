@@ -8,39 +8,68 @@ namespace Parser
 {
     public class Plot
     {
-        private string[,] x; // temperature array
-        private string[,] y; // frequency array MHz
+        private string[,] temp; // temperature array
+        private string[,] freq; // frequency array
+        private string[,] over; // overband array
+        private string[,] spec; // spec limit array
 
-        public string[,] X
+        public string[,] Temp
         {
             get
             {
-                return x;
+                return temp;
             }
 
             set
             {
-                x = value;
+                temp = value;
             }
         }
 
-        public string[,] Y
+        public string[,] Freq
         {
             get
             {
-                return y;
+                return freq;
             }
 
             set
             {
-                y = value;
+                freq = value;
             }
         }
 
-        public Plot(string[,] x, string[,] y)
+        public string[,] Over
         {
-            this.x = x;
-            this.y = y;
+            get
+            {
+                return over;
+            }
+
+            set
+            {
+                over = value;
+            }
+        }
+        public string[,] Spec
+        {
+            get
+            {
+                return spec;
+            }
+
+            set
+            {
+                spec = value;
+            }
+        }
+
+        public Plot(string[,] temp, string[,] freq, string[,] over, string[,] spec)
+        {
+            this.temp = temp;
+            this.freq = freq;
+            this.over = over;
+            this.spec = spec;
         } 
     }
 }

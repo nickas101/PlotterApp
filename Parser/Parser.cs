@@ -13,8 +13,10 @@ namespace Parser
             bool to_read = false;
             int unit = 0;
             int row = 0;
-            string[,] temp = new string[50, 100]; // temperature array
-            string[,] freq = new string[50, 100]; // frequency array
+            string[,] temp = new string[20, 50]; // temperature array
+            string[,] freq = new string[20, 50]; // frequency array
+            string[,] over = new string[20, 50]; // overband array
+            string[,] spec = new string[20, 50]; // spec limit array
 
             //string[,] temp; // temperature array
             //string[,] freq; // frequency array
@@ -24,11 +26,13 @@ namespace Parser
             for (int i = 0; i < lines.Length; i++)
             {
                 lines[i] = lines[i].Replace("<", "");
+                lines[i] = lines[i].Replace("FAIL", " ");
+                lines[i] = lines[i].Replace("+", " ");
+                lines[i] = lines[i].Replace("     ", " ");
                 lines[i] = lines[i].Replace("    ", " ");
                 lines[i] = lines[i].Replace("   ", " ");
                 lines[i] = lines[i].Replace("  ", " ");
-                lines[i] = lines[i].Replace("FAIL", " ");
-                lines[i] = lines[i].Replace("+", " ");
+                
                 lines[i] = lines[i].Trim();
 
                 if (lines[i].Contains("POSn") == true)
@@ -48,10 +52,12 @@ namespace Parser
                 {
                     string[] digs = lines[i].Split(new char[] { ' ' });
                     temp[unit, row] = digs[0];
-                    freq[unit, row] = digs[3];
+                    freq[unit, row] = digs[2];
+                    over[unit, row] = digs[3];
+                    spec[unit, row] = digs[4];
 
 
-                    //Console.Write(temp[unit, row] + "\n");
+                    //Console.Write(freq[unit, row] + "\n");
 
                     row++;
                 }
@@ -64,7 +70,7 @@ namespace Parser
             //Console.ReadKey();
 
 
-            Plot thePlot = new Plot(temp, freq);
+            Plot thePlot = new Plot(temp, freq, over, spec);
 
             return thePlot;
         }
