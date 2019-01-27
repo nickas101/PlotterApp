@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 //using Plotter1;
 
 namespace ConsoleApp1
@@ -19,15 +20,12 @@ namespace ConsoleApp1
             try
             {
                 string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-                pathToFile = folder + "\\5524.txt";
 
-                //pathToFile = File.ReadAllText(folder + "\\5524" + ".txt");
-                //\"[0-9][0-9][0-9][0-9]\" + \".txt\"
+                Regex regex = new Regex("[0-9]{4}" + ".txt", RegexOptions.IgnoreCase);
 
-                Console.WriteLine(pathToFile);
+                var files = Directory.GetFiles(folder).Where(f => regex.IsMatch(f));
 
-                Console.Write("------\nPress any key to continue . .");
-                Console.ReadKey(true);
+                pathToFile = files.First();
 
                 readEveryLine = File.ReadAllLines(pathToFile);
             }
@@ -37,9 +35,6 @@ namespace ConsoleApp1
                 Console.Write("------\nPress any key to continue . .");
                 Console.ReadKey(true);
             }
-
-            //Console.Write("------\nPress any key to continue . .");
-            //Console.ReadKey(true);
 
             //string pathToFile = "D:\\5524.txt";
             //readEveryLine = File.ReadAllLines(pathToFile);
