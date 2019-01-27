@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,6 @@ namespace ConsoleApp1
     {
         public static void DrowPlot(Parser.Plot plot)
         {
-            //Console.WriteLine(plot.Y);
-
-            //Console.ReadKey();
-
-            string[] items = { "-3","-1","1", "2", "3", "4", "5", "6" };
 
             Chart chart = new Chart();
 
@@ -25,19 +21,51 @@ namespace ConsoleApp1
             chart.ChartAreas.Add(area);
 
             chart.BackColor = System.Drawing.Color.White; // Was Transparent
-            chart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            chart.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chart.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+
+            chart.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            chart.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+
+            chart.ChartAreas[0].BackColor = Color.GhostWhite;
+
+            //chart.BorderlineWidth = Chart
+
+
+            chart.BackColor = Color.Gray;
+            chart.BackSecondaryColor = Color.WhiteSmoke;
+            chart.BackGradientStyle = GradientStyle.DiagonalRight;
+
+            //chart.PlotArea.LineFormat.Color = XColors.DarkGray;
+
+            chart.BorderSkin.SkinStyle = BorderSkinStyle.Emboss;
+
+            chart.ChartAreas[0].AxisX.MajorGrid.Interval = 1;
+
+            //chart.ChartAreas[0].AxisY.Minimum = -.02;
+
+            //chart.ChartAreas[0].AxisX.MajorGrid.LineColor.IsNamedColor.Equals.
 
             chart.ChartAreas[0].AxisX.Title = "Frequency over Temperature";
 
             Series series = new Series()
             {
-                Name = "series2",
-                IsVisibleInLegend = false,
-                ChartType = SeriesChartType.Line
+                Name = "series1",
+                IsVisibleInLegend = false,  // ???????
+                ChartType = SeriesChartType.Spline
             };
 
             Series series2 = new Series()
+            {
+                Name = "series2",
+                IsVisibleInLegend = false,
+                ChartType = SeriesChartType.Line
+
+                //BorderDashStyle = ChartDashStyle.Dash
+           
+            };
+
+            Series series3 = new Series()
             {
                 Name = "series3",
                 IsVisibleInLegend = false,
@@ -45,19 +73,44 @@ namespace ConsoleApp1
             };
 
             chart.Series.Add(series);
-            //chart.Series.Add(series2);
+            chart.Series.Add(series2);
+            chart.Series.Add(series3);
 
-            for (int i = 0; i < plot.X.GetLength(1); i++)
+            //chart.Series["series1"].BorderWidth = Chart
+            chart.Series["series2"].BorderDashStyle = ChartDashStyle.Dash;
+            chart.Series["series3"].BorderDashStyle = ChartDashStyle.Dash;
+
+
+            for (int i = 0; i < plot.Temp.GetLength(1); i++)
             {
 
                 //DataPoint p1 = new DataPoint(0, Double.Parse(item.Kurz));
-                if (plot.Y[2, i] != null)
+                if (plot.Over[2, i] != null)
                 {
-                    DataPoint p1 = new DataPoint(0, Double.Parse(plot.Y[2, i]));
+                    DataPoint p1 = new DataPoint(0, Double.Parse(plot.Over[2, i]));
                     p1.Color = System.Drawing.Color.Blue;
-                    p1.AxisLabel = plot.X[2, i];
+                    p1.BorderWidth = 2;
+                    p1.AxisLabel = plot.Temp[2, i];
                     series.Points.Add(p1);
                     p1.LegendText = "Legend";
+                }
+
+                if (plot.Spec[2, i] != null)
+                {
+                    DataPoint p3 = new DataPoint(0, Double.Parse(plot.Spec[2, i]));
+                    p3.Color = System.Drawing.Color.Red;
+                    p3.AxisLabel = plot.Temp[2, i];
+                    series2.Points.Add(p3);
+                    p3.LegendText = "Legend";
+                }
+
+                if (plot.Spec[2, i] != null)
+                {
+                    DataPoint p4 = new DataPoint(0, -Double.Parse(plot.Spec[2, i]));
+                    p4.Color = System.Drawing.Color.Red;
+                    p4.AxisLabel = plot.Temp[2, i];
+                    series3.Points.Add(p4);
+                    p4.LegendText = "Legend";
                 }
 
                 DataPoint p2 = new DataPoint(0, Double.Parse("0"));
@@ -73,7 +126,7 @@ namespace ConsoleApp1
                 //p1.Label = "Label";
 
                 
-                series2.Points.Add(p2);
+                //series2.Points.Add(p2);
 
 
                 //Console.Write(plot.Y[2, i] + "\n");
