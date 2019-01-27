@@ -36,9 +36,6 @@ namespace ConsoleApp1
                 Console.ReadKey(true);
             }
 
-            //string pathToFile = "D:\\5524.txt";
-            //readEveryLine = File.ReadAllLines(pathToFile);
-
             return readEveryLine;
         }
     }
