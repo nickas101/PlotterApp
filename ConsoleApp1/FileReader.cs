@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Diagnostics;
 //using Plotter1;
 
 namespace ConsoleApp1
@@ -12,13 +13,28 @@ namespace ConsoleApp1
     {
        public static string[] Read()
         {
-            string pathToFile = "D:\\5524.txt";
-            string[] readEveryLine = new string[5];
+            string[] readEveryLine = {};
+            string pathToFile;
 
-            readEveryLine = File.ReadAllLines(pathToFile);
+            try
+            {
+                string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+                pathToFile = File.ReadAllText(folder + "\\5524.txt");
+                Console.WriteLine(pathToFile);
+                readEveryLine = File.ReadAllLines(pathToFile);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Console.Write("------\nPress any key to continue . .");
+                Console.ReadKey(true);
+            }
 
-            //for (int i = 0; i < readEveryLine.Length; i++)
-            //Console.Write(readEveryLine[i] + " | ");
+            //Console.Write("------\nPress any key to continue . .");
+            //Console.ReadKey(true);
+
+            //string pathToFile = "D:\\5524.txt";
+            //readEveryLine = File.ReadAllLines(pathToFile);
 
             return readEveryLine;
         }
