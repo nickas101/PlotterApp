@@ -12,9 +12,9 @@ namespace ConsoleApp1
         {
             string[] allLines = FileReader.Read();
 
-            Parser.Plot plot = Parser.Parser.Parse(allLines);
+            Parser.Plots plots = Parser.Parser.Parse(allLines);
 
-            Plotter.DrowPlot(plot);
+            Plotter.DrowPlot(plots);
         }
     }
 }

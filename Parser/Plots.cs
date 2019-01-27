@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parser
 {
-    public class Plot
+    public class Plots
     {
         private string[,] temp; // temperature array
         private string[,] freq; // frequency array
@@ -64,7 +64,7 @@ namespace Parser
             }
         }
 
-        public Plot(string[,] temp, string[,] freq, string[,] over, string[,] spec)
+        public Plots(string[,] temp, string[,] freq, string[,] over, string[,] spec)
         {
             this.temp = temp;
             this.freq = freq;

@@ -8,7 +8,7 @@ namespace Parser
 {
     public class Parser
     {
-        public static Plot Parse(string[] lines)
+        public static Plots Parse(string[] lines)
         {
             bool to_read = false;
             int unit = 0;
@@ -20,8 +20,6 @@ namespace Parser
 
             //string[,] temp; // temperature array
             //string[,] freq; // frequency array
-
-            //string[] xx = { "777", "888", "999", "555" };
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -70,9 +68,9 @@ namespace Parser
             //Console.ReadKey();
 
 
-            Plot thePlot = new Plot(temp, freq, over, spec);
+            Plots thePlots = new Plots(temp, freq, over, spec);
 
-            return thePlot;
+            return thePlots;
         }
     }
 }
