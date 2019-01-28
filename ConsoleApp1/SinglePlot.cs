@@ -61,7 +61,27 @@ namespace ConsoleApp1
 
             chart.ChartAreas[0].BackColor = Color.GhostWhite;
 
-            //chart.BorderlineWidth = Chart
+
+            // strip for upper limit
+            StripLine upper_lower_strip = new StripLine();
+            upper_lower_strip.Interval = 0;
+            //upper_lower_strip.Text = "Spec limit";
+            upper_lower_strip.IntervalOffset = Double.Parse(spec[1]);
+            upper_lower_strip.StripWidth = 0.00005;
+            upper_lower_strip.BorderDashStyle = ChartDashStyle.Dash;
+            upper_lower_strip.BackColor = Color.FromArgb(150, Color.Red);
+            chart.ChartAreas[0].AxisY.StripLines.Add(upper_lower_strip);
+
+            // strip for lower limit
+            StripLine limit_lower_strip = new StripLine();
+            limit_lower_strip.Interval = 0;
+            //limit_lower_strip.Text = "Spec limit";
+            limit_lower_strip.IntervalOffset = -Double.Parse(spec[1]);
+            limit_lower_strip.StripWidth = 0.00005;
+            limit_lower_strip.BorderDashStyle = ChartDashStyle.Dash;
+            limit_lower_strip.BackColor = Color.FromArgb(150, Color.Red);
+            chart.ChartAreas[0].AxisY.StripLines.Add(limit_lower_strip);
+
 
 
             chart.BackColor = Color.Gray;
@@ -72,13 +92,15 @@ namespace ConsoleApp1
 
             chart.BorderSkin.SkinStyle = BorderSkinStyle.Emboss;
 
-            chart.ChartAreas[0].AxisX.MajorGrid.Interval = 1;
+            //chart.ChartAreas[0].AxisX.MajorGrid.Interval = 1;
 
-            //chart.ChartAreas[0].AxisY.Minimum = -.02;
+            chart.ChartAreas[0].AxisY.Minimum = -.01;
+            chart.ChartAreas[0].AxisY.Maximum = .01;
 
             //chart.ChartAreas[0].AxisX.MajorGrid.LineColor.IsNamedColor.Equals.
 
-            chart.ChartAreas[0].AxisX.Title = "Frequency over Temperature";
+            chart.ChartAreas[0].AxisX.Title = "Temperature, C";
+            chart.ChartAreas[0].AxisY.Title = "Frequency, ppm";
 
             Series series = new Series()
             {
@@ -105,12 +127,12 @@ namespace ConsoleApp1
             };
 
             chart.Series.Add(series);
-            chart.Series.Add(series2);
-            chart.Series.Add(series3);
+            //chart.Series.Add(series2);
+            //chart.Series.Add(series3);
 
             //chart.Series["series1"].BorderWidth = Chart
-            chart.Series["series2"].BorderDashStyle = ChartDashStyle.Dash;
-            chart.Series["series3"].BorderDashStyle = ChartDashStyle.Dash;
+            //chart.Series["series2"].BorderDashStyle = ChartDashStyle.Dash;
+            //chart.Series["series3"].BorderDashStyle = ChartDashStyle.Dash;
 
             //chart.Series[0].Name = "Подача";
 
@@ -128,20 +150,20 @@ namespace ConsoleApp1
                     //p1.Name = "Unit";
                 }
 
-                if (spec[i] != null)
-                {
-                    DataPoint p3 = new DataPoint(0, Double.Parse(spec[i]));
-                    p3.Color = System.Drawing.Color.Red;
-                    p3.AxisLabel = x[i];
-                    series2.Points.Add(p3);
-                    p3.LegendText = "Legend";
+                //if (spec[i] != null)
+                //{
+                //    DataPoint p3 = new DataPoint(0, Double.Parse(spec[i]));
+                //    p3.Color = System.Drawing.Color.Red;
+                //    p3.AxisLabel = x[i];
+                //    series2.Points.Add(p3);
+                //    p3.LegendText = "Legend";
 
-                    DataPoint p4 = new DataPoint(0, -Double.Parse(spec[i]));
-                    p4.Color = System.Drawing.Color.Red;
-                    p4.AxisLabel = x[i];
-                    series3.Points.Add(p4);
-                    p4.LegendText = "Legend";
-                }
+                //    DataPoint p4 = new DataPoint(0, -Double.Parse(spec[i]));
+                //    p4.Color = System.Drawing.Color.Red;
+                //    p4.AxisLabel = x[i];
+                //    series3.Points.Add(p4);
+                //    p4.LegendText = "Legend";
+                //}
 
 
 
