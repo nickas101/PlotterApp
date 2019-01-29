@@ -40,7 +40,7 @@ namespace ConsoleApp1
                 {
                     string unit = i.ToString();
 
-                    SinglePlot singlePlot = new SinglePlot(x, y, spec);
+                    SinglePlot singlePlot = new SinglePlot(x, y, spec, i, plots.Spc[i]);
 
                     string filename = "D:\\Plots/Unit#" + unit + ".png";
                     singlePlot.Chrt.SaveImage(filename, ChartImageFormat.Png);

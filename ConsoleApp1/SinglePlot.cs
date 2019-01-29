@@ -15,6 +15,9 @@ namespace ConsoleApp1
         private string[] x;
         private string[] y;
         private string[] spec;
+        private string spc;
+        private int i;
+
         private Chart chart;
 
         public Chart Chrt
@@ -30,11 +33,13 @@ namespace ConsoleApp1
             }
         }
 
-        public SinglePlot(string[] x, string[] y, string[] spec)
+        public SinglePlot(string[] x, string[] y, string[] spec, int i, string spc)
         {
             this.x = x;
             this.y = y;
             this.spec = spec;
+            this.i = i;
+            this.spc = spc;
 
             DrowSinglePlot();
         }
@@ -60,6 +65,9 @@ namespace ConsoleApp1
             chart.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
 
             chart.ChartAreas[0].BackColor = Color.GhostWhite;
+
+            chart.Titles.Add(spc + "  Unit#" + i.ToString());
+            chart.Titles[0].Font = new Font("Arial", 14, FontStyle.Bold);
 
 
             // strip for upper limit

@@ -12,6 +12,7 @@ namespace Parser
         private string[,] freq; // frequency array
         private string[,] over; // overband array
         private string[,] spec; // spec limit array
+        private string[] spc;
 
         public string[,] Temp
         {
@@ -64,12 +65,26 @@ namespace Parser
             }
         }
 
-        public Plots(string[,] temp, string[,] freq, string[,] over, string[,] spec)
+        public string[] Spc
+        {
+            get
+            {
+                return spc;
+            }
+
+            set
+            {
+                spc = value;
+            }
+        }
+
+        public Plots(string[,] temp, string[,] freq, string[,] over, string[,] spec, string[] spc)
         {
             this.temp = temp;
             this.freq = freq;
             this.over = over;
             this.spec = spec;
+            this.spc = spc;
         } 
     }
 }

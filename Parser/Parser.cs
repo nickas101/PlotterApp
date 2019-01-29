@@ -13,10 +13,12 @@ namespace Parser
             bool to_read = false;
             int unit = 0;
             int row = 0;
+            string[] spc = new string[20];
             string[,] temp = new string[20, 50]; // temperature array
             string[,] freq = new string[20, 50]; // frequency array
             string[,] over = new string[20, 50]; // overband array
             string[,] spec = new string[20, 50]; // spec limit array
+            string specTemp = "";
 
             //string[,] temp; // temperature array
             //string[,] freq; // frequency array
@@ -41,7 +43,16 @@ namespace Parser
                     row = 0;
                     //Console.Write(unit + "\n");
                 }
-                    
+
+                if (lines[i].Contains("SPEC =") == true)
+                {
+                    string[] words = lines[i].Split(new char[] { ' ' });
+                    //string[] word = words[3].Split(new char[] { ':' });
+                    specTemp = words[2];
+                    specTemp = specTemp.Trim();
+                    //Console.Write(spc + "\n");
+                }
+
 
                 if (lines[i].Contains("Worst") == true)
                     to_read = false;
@@ -62,13 +73,14 @@ namespace Parser
 
                 if (lines[i].Contains("(ppm/'C)") == true)
                     to_read = true;
+                    spc[unit] = specTemp;
 
             }
 
             //Console.ReadKey();
 
 
-            Plots thePlots = new Plots(temp, freq, over, spec);
+            Plots thePlots = new Plots(temp, freq, over, spec, spc);
 
             return thePlots;
         }
