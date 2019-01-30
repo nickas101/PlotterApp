@@ -17,6 +17,11 @@ namespace ConsoleApp1
             DirectoryInfo d = new DirectoryInfo(@"D:\Plots");
             d.Create();
 
+            string[] xm = new string[20];
+            string[,] ym = new string[20, 50];
+            string[] specm = new string[20];
+            //bool notEmptym = false;
+
             for (int i = 1; i < plots.Temp.GetLength(0); i++)
             {
                 string[] x = new string[20];
@@ -29,8 +34,11 @@ namespace ConsoleApp1
                     if (plots.Temp[i, j] != null)
                     {
                         x[j] = plots.Temp[i, j];
+                        xm[j] = plots.Temp[i, j];
                         y[j] = plots.Over[i, j];
+                        ym[i,j] = plots.Over[i, j];
                         spec[j] = plots.Spec[i, j];
+                        specm[j] = plots.Spec[i, j];
 
                         notEmpty = true;
                     } 
@@ -46,6 +54,13 @@ namespace ConsoleApp1
                     singlePlot.Chrt.SaveImage(filename, ChartImageFormat.Png);
                 }
             }
+
+            
+
+            MultyPlot multyPlot = new MultyPlot(xm, ym, specm, 1, plots.Spc[1]);
+
+            string filenameMulty = "D:\\Plots/AllUnits.png";
+            multyPlot.Chrt.SaveImage(filenameMulty, ChartImageFormat.Png);
         }
     }
 }

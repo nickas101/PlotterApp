@@ -155,7 +155,7 @@ namespace ConsoleApp1
                     p1.AxisLabel = x[i];
                     series.Points.Add(p1);
                     p1.LegendText = "Legend";
-                    //p1.Name = "Unit";
+                    p1.Color = System.Drawing.Color.Blue;
                 }
 
                 //if (spec[i] != null)
@@ -175,9 +175,9 @@ namespace ConsoleApp1
 
 
 
-                DataPoint p2 = new DataPoint(0, Double.Parse("0"));
+                //DataPoint p2 = new DataPoint(0, Double.Parse("0"));
 
-                p2.Color = System.Drawing.Color.LightBlue;
+                //p2.Color = System.Drawing.Color.LightBlue;
                 //p1.AxisLabel = item.Kod;
                 //p1.LegendText = item.Kod;
                 // p1.Label = item.Kurz;
