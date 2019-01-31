@@ -110,10 +110,28 @@ namespace ConsoleApp1
             chart.ChartAreas[0].AxisX.Title = "Temperature, C";
             chart.ChartAreas[0].AxisY.Title = "Frequency, ppm";
 
+            //Legend legend = new Legend()
+            //{
+            //    Name = "Legend1",
+            //};
+
+            //Legend legend1 = new Legend("Legend1");
+            //LegendItem legendItem1 = new LegendItem("Under Performance", Color.Red, "");
+            //legendItem1.BorderColor = Color.Red;
+
+            //chart.Legends.Add(legend1);
+
+            //chart.Legends["Legend1"].Docking = Docking.Bottom;
+
+            //chart.Legends.Add
+
+            //chart.LegendTitle = "Title";
+
             Series series = new Series()
             {
                 Name = "series1",
                 IsVisibleInLegend = true,  // ???????
+                //IsValueShownAsLabel = true,
                 ChartType = SeriesChartType.Spline
             };
 
@@ -121,6 +139,7 @@ namespace ConsoleApp1
             {
                 Name = "series2",
                 IsVisibleInLegend = true,
+                //IsValueShownAsLabel = true,
                 ChartType = SeriesChartType.Line
 
                 //BorderDashStyle = ChartDashStyle.Dash
@@ -131,6 +150,7 @@ namespace ConsoleApp1
             {
                 Name = "series3",
                 IsVisibleInLegend = true,
+                //IsValueShownAsLabel = true,
                 ChartType = SeriesChartType.Line
             };
 
@@ -144,6 +164,8 @@ namespace ConsoleApp1
 
             //chart.Series[0].Name = "Подача";
 
+            //series.LegendTitle = "Title";
+
             for (int i = 0; i < x.Length; i++)
             {
 
@@ -153,9 +175,15 @@ namespace ConsoleApp1
                     p1.Color = System.Drawing.Color.Blue;
                     p1.BorderWidth = 2;
                     p1.AxisLabel = x[i];
+                    //series.Points[2].LegendText = "Unit#1";
                     series.Points.Add(p1);
-                    p1.LegendText = "Legend";
+                    //p1.LegendText = "Legend";
                     p1.Color = System.Drawing.Color.Blue;
+                    p1.LegendText = "Unit#1";
+
+                    //this.chart.DisplayLegend = true;
+                    //this.chart1.LegendTitle = "Title";
+                    //p1.LegendText[0] = new Font("Arial", 14, FontStyle.Bold);
                 }
 
                 //if (spec[i] != null)
