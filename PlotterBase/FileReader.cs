@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 //using Plotter1;
 
-namespace ConsoleApp1
+namespace PlotterBase
 {
     class FileReader
     {

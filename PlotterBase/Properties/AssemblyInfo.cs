@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Plotter1")]
+[assembly: AssemblyTitle("PlotterBase")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Plotter1")]
+[assembly: AssemblyProduct("PlotterBase")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("69f57c1a-e6aa-46fc-bacd-3e56da59b94e")]
+[assembly: Guid("786aaf23-55a8-4a11-9f34-f54f87732701")]
 
 // Version information for an assembly consists of the following four values:
 //

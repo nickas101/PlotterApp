@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace PlotterBase
 {
     class Program
     {
@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
             Parser.Plots plots = Parser.Parser.Parse(allLines);
 
-            Plotter.DrowPlot(plots);
+            Plotter.PreparePlots(plots);
         }
     }
 }
