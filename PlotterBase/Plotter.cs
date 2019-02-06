@@ -20,7 +20,6 @@ namespace PlotterBase
             string[] xm = new string[20];
             string[,] ym = new string[20, 50];
             string[] specm = new string[20];
-            //bool notEmptym = false;
 
             for (int i = 1; i < plots.Temp.GetLength(0); i++)
             {
