@@ -36,12 +36,11 @@ namespace PlotterBase
             }
         }
 
-        public Plot(string[] x, string[,] y, string[] specArray, int i, string productNumber)
+        public Plot(string[] x, string[,] y, string[] specArray, string productNumber)
         {
             this.x = x;
             this.multyY = y;
             this.specArray = specArray;
-            this.i = i;
             this.productNumber = productNumber;
 
             PreparePlot();
@@ -64,7 +63,6 @@ namespace PlotterBase
         {
             string[] specArray = this.specArray;
             double specRound = Math.Round(2 * Double.Parse(this.specArray[1]), 2);
-            int i = this.i;
 
             Chart chart = new Chart();
 

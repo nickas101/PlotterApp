@@ -12,13 +12,12 @@ namespace PlotterBase
 {
     class MultyPlot : Plot
     {
-        public MultyPlot(string[] x, string[,] y, string[] specArray, int i, string productNumber) :
-                    base(x, y, specArray, i, productNumber)
+        public MultyPlot(string[] x, string[,] y, string[] specArray, string productNumber) :
+                    base(x, y, specArray, productNumber)
         {
             this.x = x;
             this.multyY = y;
             this.specArray = specArray;
-            this.i = i;
             this.productNumber = productNumber;
 
             PreparePlot();
