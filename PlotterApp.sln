@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlotterBase", "PlotterBase\PlotterBase.csproj", "{786AAF23-55A8-4A11-9F34-F54F87732701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{5217665E-7365-496F-B708-1B3D52CF4F64}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlotterTest", "PlotterTest\PlotterTest.csproj", "{34C9CE19-4414-4FE2-9316-409170C8126D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{786AAF23-55A8-4A11-9F34-F54F87732701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{786AAF23-55A8-4A11-9F34-F54F87732701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{786AAF23-55A8-4A11-9F34-F54F87732701}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5217665E-7365-496F-B708-1B3D52CF4F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5217665E-7365-496F-B708-1B3D52CF4F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5217665E-7365-496F-B708-1B3D52CF4F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5217665E-7365-496F-B708-1B3D52CF4F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C9CE19-4414-4FE2-9316-409170C8126D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C9CE19-4414-4FE2-9316-409170C8126D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C9CE19-4414-4FE2-9316-409170C8126D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C9CE19-4414-4FE2-9316-409170C8126D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
