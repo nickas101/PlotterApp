@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject
+namespace PlotterTest
 {
     [TestClass]
-    public class UnitTest1
+    public class PlotterBaseTest
     {
         [TestMethod]
         public void TestMethod1()
