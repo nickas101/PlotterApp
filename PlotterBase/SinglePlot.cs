@@ -48,7 +48,7 @@ namespace PlotterBase
             for (var row = 0; row < x.Length; row++)
             {
                 if (y[row] == null) continue;
-                var point = new DataPoint(Double.Parse(x[row]), Double.Parse(y[row]))
+                var point = new DataPoint(double.Parse(x[row]), double.Parse(y[row]))
                 {
                     Color = Color.Blue,
                     BorderWidth = 2,
