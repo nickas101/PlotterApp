@@ -59,10 +59,10 @@ namespace PlotterBase
                     {
                         if (y[j, i] != null)
                         {
-                            DataPoint point = new DataPoint(0, Double.Parse(y[j, i]));
+                            DataPoint point = new DataPoint(Double.Parse(x[i]), Double.Parse(y[j, i]));
                             point.Color = Color.Blue;
                             point.BorderWidth = 2;
-                            point.AxisLabel = x[i];
+                            //point.AxisLabel = x[i];
                             series.Points.Add(point);
 
                             switch (j)
