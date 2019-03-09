@@ -44,7 +44,7 @@ namespace PlotterBase
             this.productNumber = productNumber;
 
             PreparePlot();
-            DrowPlot();
+            DrawPlot();
         }
 
         public Plot(string[] x, string[] y, string[] specArray, int i, string productNumber)
@@ -56,7 +56,7 @@ namespace PlotterBase
             this.productNumber = productNumber;
 
             PreparePlot();
-            DrowPlot();
+            DrawPlot();
         }
 
         public void PreparePlot()
@@ -116,7 +116,7 @@ namespace PlotterBase
             this.chartImage = chart;
         }
 
-        public virtual void DrowPlot()
+        public virtual void DrawPlot()
         {
         }
     }

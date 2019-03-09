@@ -21,10 +21,10 @@ namespace PlotterBase
             this.productNumber = productNumber;
 
             PreparePlot();
-            DrowPlot();
+            DrawPlot();
         }
 
-        public override void DrowPlot()
+        public override void DrawPlot()
         {
             string[] x = this.x;
             string[,] y = this.multyY;
