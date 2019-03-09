@@ -35,7 +35,7 @@ namespace PlotterBase
             chart.Titles.Add(productNumber + "  Unit#" + i.ToString());
             chart.Titles[0].Font = new Font("Arial", 14, FontStyle.Bold);
 
-            Series series = new Series()
+            var series = new Series()
             {
                 Name = "Unit#" + i.ToString(),
                 IsVisibleInLegend = true,
@@ -45,17 +45,16 @@ namespace PlotterBase
 
             chart.Series.Add(series);
             
-            for (int i = 0; i < x.Length; i++)
+            for (var row = 0; row < x.Length; row++)
             {
-                if (y[i] != null)
+                if (y[row] == null) continue;
+                var point = new DataPoint(Double.Parse(x[row]), Double.Parse(y[row]))
                 {
-                    DataPoint point = new DataPoint(Double.Parse(x[i]), Double.Parse(y[i]));
-                    point.Color = System.Drawing.Color.Blue;
-                    point.BorderWidth = 2;
-                    //point.AxisLabel = x[i];
-                    series.Points.Add(point);
-                    point.Color = System.Drawing.Color.Blue;
-                }
+                    Color = Color.Blue,
+                    BorderWidth = 2,
+                    //AxisLabel = x[row]
+                };
+                series.Points.Add(point);
             }
 
             this.chartImage = chart;
