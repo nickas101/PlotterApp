@@ -10,9 +10,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PlotterBase
 {
-    class MultyPlot : Plot
+    class MultiPlot : Plot
     {
-        public MultyPlot(string[] x, string[,] y, string[] specArray, string productNumber) :
+        public MultiPlot(string[] x, string[,] y, string[] specArray, string productNumber) :
                     base(x, y, specArray, productNumber)
         {
             this.x = x;

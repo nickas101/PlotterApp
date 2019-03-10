@@ -54,10 +54,10 @@ namespace PlotterBase
                 }
             }
 
-            MultyPlot multyPlot = new MultyPlot(xm, ym, specm, plots.Spc[1]);
+            MultiPlot multiPlot = new MultiPlot(xm, ym, specm, plots.Spc[1]);
 
             string filenameMulty = "D:\\Plots/AllUnits.png";
-            multyPlot.ChartImage.SaveImage(filenameMulty, ChartImageFormat.Png);
+            multiPlot.ChartImage.SaveImage(filenameMulty, ChartImageFormat.Png);
         }
     }
 }

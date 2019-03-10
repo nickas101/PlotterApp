@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileReader.cs" />
-    <Compile Include="MultyPlot.cs" />
+    <Compile Include="MultiPlot.cs" />
     <Compile Include="Plot.cs" />
     <Compile Include="Plotter.cs" />
     <Compile Include="Program.cs" />
