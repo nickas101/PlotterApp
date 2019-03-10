@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PlotterBase
@@ -24,7 +18,7 @@ namespace PlotterBase
             DrawPlot();
         }
 
-        public override void DrawPlot()
+        public sealed override void DrawPlot()
         {
             string[] x = this.x;
             string[,] y = this.multyY;
@@ -34,71 +28,67 @@ namespace PlotterBase
             chart.Titles.Add(this.productNumber + "  All Units");
             chart.Titles[0].Font = new Font("Arial", 14, FontStyle.Bold);
 
-            Legend legend = new Legend("Legend1");
-            legend.Font = new Font("Arial", 10);
+            var legend = new Legend("Legend1") {Font = new Font("Arial", 10)};
             //LegendItem legendItem1 = new LegendItem("Under Performance", Color.Red, "");
             //legendItem1.BorderColor = Color.Red;
 
             chart.Legends.Add(legend);
             //legend.CustomItems.Add(legendItem1);
 
-            for (int j = 1; j < y.GetLength(0); j++)
-            {    
-                if (y[j, 1] != null)
+            for (var unitNumber = 1; unitNumber < y.GetLength(0); unitNumber++)
+            {
+                if (y[unitNumber, 1] == null) continue;
+                var series = new Series()
                 {
-                    Series series = new Series()
+                    Name = "Unit#" + unitNumber.ToString(),
+                    IsVisibleInLegend = true,
+                    ChartType = SeriesChartType.Spline
+                };
+
+                chart.Series.Add(series);
+
+                for (var row = 0; row < x.Length; row++)
+                {
+                    if (y[unitNumber, row] == null) continue;
+                    var point = new DataPoint(Double.Parse(x[row]), Double.Parse(y[unitNumber, row]))
                     {
-                        Name = "Unit#" + j.ToString(),
-                        IsVisibleInLegend = true,
-                        ChartType = SeriesChartType.Spline
+                        Color = Color.Blue, BorderWidth = 2
+                        //AxisLabel = x[i];
                     };
+                    series.Points.Add(point);
 
-                    chart.Series.Add(series);
-
-                    for (int i = 0; i < x.Length; i++)
+                    switch (unitNumber)
                     {
-                        if (y[j, i] != null)
-                        {
-                            DataPoint point = new DataPoint(Double.Parse(x[i]), Double.Parse(y[j, i]));
+                        case 1:
+                            point.Color = Color.Yellow;
+                            break;
+                        case 2:
+                            point.Color = Color.YellowGreen;
+                            break;
+                        case 3:
+                            point.Color = Color.Pink;
+                            break;
+                        case 4:
+                            point.Color = Color.LightCyan;
+                            break;
+                        case 5:
+                            point.Color = Color.SeaGreen;
+                            break;
+                        case 6:
+                            point.Color = Color.Violet;
+                            break;
+                        case 7:
+                            point.Color = Color.Pink;
+                            break;
+                        case 8:
+                            point.Color = Color.RoyalBlue;
+                            break;
+                        case 9:
+                            point.Color = Color.Salmon;
+                            break;
+                        default:
                             point.Color = Color.Blue;
-                            point.BorderWidth = 2;
-                            //point.AxisLabel = x[i];
-                            series.Points.Add(point);
-
-                            switch (j)
-                            {
-                                case 1:
-                                    point.Color = Color.Yellow;
-                                    break;
-                                case 2:
-                                    point.Color = Color.YellowGreen;
-                                    break;
-                                case 3:
-                                    point.Color = Color.Pink;
-                                    break;
-                                case 4:
-                                    point.Color = Color.LightCyan;
-                                    break;
-                                case 5:
-                                    point.Color = Color.SeaGreen;
-                                    break;
-                                case 6:
-                                    point.Color = Color.Violet;
-                                    break;
-                                case 7:
-                                    point.Color = Color.Pink;
-                                    break;
-                                case 8:
-                                    point.Color = Color.RoyalBlue;
-                                    break;
-                                case 9:
-                                    point.Color = Color.Salmon;
-                                    break;
-                                default:
-                                    point.Color = Color.Blue;
-                                    break;
-                            }
-                        }
+                            break;
                     }
                 }
             }
