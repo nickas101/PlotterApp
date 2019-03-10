@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PlotterBase
@@ -59,18 +53,23 @@ namespace PlotterBase
             DrawPlot();
         }
 
-        public void PreparePlot()
+        protected void PreparePlot()
         {
             string[] specArray = this.specArray;
             double specRound = Math.Round(2 * Double.Parse(this.specArray[1]), 2);
 
-            Chart chart = new Chart();
-
-            chart.Size = new System.Drawing.Size(this.plotSizeX, this.plotSizeY);
-            ChartArea area = new ChartArea();
+            var chart = new Chart
+            {
+                Size = new System.Drawing.Size(this.plotSizeX, this.plotSizeY),
+                BackColor = Color.Gray,
+                BackSecondaryColor = Color.WhiteSmoke,
+                BackGradientStyle = GradientStyle.DiagonalRight,
+                BorderSkin = {SkinStyle = BorderSkinStyle.Emboss}
+            };
+           
+            var area = new ChartArea();
             chart.ChartAreas.Add(area);
-
-            chart.BackColor = System.Drawing.Color.White; // Was Transparent
+    
             chart.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
 
@@ -80,30 +79,30 @@ namespace PlotterBase
             chart.ChartAreas[0].BackColor = Color.GhostWhite;
 
             // strip for upper limit
-            StripLine upper_lower_strip = new StripLine();
-            upper_lower_strip.Interval = 0;
-            //upper_lower_strip.Text = "Spec limit";
-            upper_lower_strip.IntervalOffset = Double.Parse(specArray[1]);
-            upper_lower_strip.StripWidth = 0.00005;
-            upper_lower_strip.BorderDashStyle = ChartDashStyle.Dash;
-            upper_lower_strip.BackColor = Color.FromArgb(150, Color.Red);
-            chart.ChartAreas[0].AxisY.StripLines.Add(upper_lower_strip);
+            var limitUpperStrip = new StripLine
+            {
+                Interval = 0,
+                IntervalOffset = double.Parse(specArray[1]),
+                StripWidth = 0.00005,
+                BorderDashStyle = ChartDashStyle.Dash,
+                BackColor = Color.FromArgb(150, Color.Red),
+                //Text = "Spec limit"
+            };
+
+            chart.ChartAreas[0].AxisY.StripLines.Add(limitUpperStrip);
 
             // strip for lower limit
-            StripLine limit_lower_strip = new StripLine();
-            limit_lower_strip.Interval = 0;
-            //limit_lower_strip.Text = "Spec limit";
-            limit_lower_strip.IntervalOffset = -Double.Parse(specArray[1]);
-            limit_lower_strip.StripWidth = 0.00005;
-            limit_lower_strip.BorderDashStyle = ChartDashStyle.Dash;
-            limit_lower_strip.BackColor = Color.FromArgb(150, Color.Red);
-            chart.ChartAreas[0].AxisY.StripLines.Add(limit_lower_strip);
-
-            chart.BackColor = Color.Gray;
-            chart.BackSecondaryColor = Color.WhiteSmoke;
-            chart.BackGradientStyle = GradientStyle.DiagonalRight;
-
-            chart.BorderSkin.SkinStyle = BorderSkinStyle.Emboss;
+            var limitLowerStrip = new StripLine
+            {
+                Interval = 0,
+                IntervalOffset = -double.Parse(specArray[1]),
+                StripWidth = 0.00005,
+                BorderDashStyle = ChartDashStyle.Dash,
+                BackColor = Color.FromArgb(150, Color.Red),
+                //Text = "Spec limit"
+            };
+            
+            chart.ChartAreas[0].AxisY.StripLines.Add(limitLowerStrip);
 
             //chart.ChartAreas[0].AxisX.MajorGrid.Interval = 1;
 
@@ -116,7 +115,7 @@ namespace PlotterBase
             this.chartImage = chart;
         }
 
-        public virtual void DrawPlot()
+        protected virtual void DrawPlot()
         {
         }
     }

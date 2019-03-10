@@ -25,7 +25,7 @@ namespace PlotterBase
             DrawPlot();
         }
 
-        public sealed override void DrawPlot()
+        protected sealed override void DrawPlot()
         {
             string[] x = this.x;
             string[] y = this.singleY;
