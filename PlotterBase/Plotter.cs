@@ -1,63 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.IO;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PlotterBase
 {
-    public class Plotter
+    public static class Plotter
     {
         public static void PreparePlots(Parser.Plots plots)
         {
-            DirectoryInfo d = new DirectoryInfo(@"D:\Plots");
-            d.Create();
+            const string OUTPUTPATH = "D:\\Plots";
+            var outputDirectory = new DirectoryInfo(@OUTPUTPATH);
+            outputDirectory.Create();
 
             string[] xm = new string[20];
             string[,] ym = new string[20, 50];
             string[] specm = new string[20];
 
-            for (int i = 1; i < plots.Temp.GetLength(0); i++)
+            for (var i = 1; i < plots.Temp.GetLength(0); i++)
             {
                 string[] x = new string[20];
                 string[] y = new string[20];
                 string[] spec = new string[20];
                 bool notEmpty = false;
 
-                for (int j = 0; j < plots.Temp.GetLength(1); j++)
+                for (var j = 0; j < plots.Temp.GetLength(1); j++)
                 {
-                    if (plots.Temp[i, j] != null)
-                    {
-                        x[j] = plots.Temp[i, j];
-                        xm[j] = plots.Temp[i, j];
-                        y[j] = plots.Over[i, j];
-                        ym[i,j] = plots.Over[i, j];
-                        spec[j] = plots.Spec[i, j];
-                        specm[j] = plots.Spec[i, j];
+                    if (plots.Temp[i, j] == null) continue;
+                    x[j] = plots.Temp[i, j];
+                    xm[j] = plots.Temp[i, j];
+                    y[j] = plots.Over[i, j];
+                    ym[i,j] = plots.Over[i, j];
+                    spec[j] = plots.Spec[i, j];
+                    specm[j] = plots.Spec[i, j];
 
-                        notEmpty = true;
-                    } 
+                    notEmpty = true;
                 }
- 
-                if (notEmpty == true)
-                {
-                    string unit = i.ToString();
 
-                    SinglePlot singlePlot = new SinglePlot(x, y, spec, i, plots.Spc[i]);
+                if (notEmpty != true) continue;
+                string unit = i.ToString();
 
-                    string filename = "D:\\Plots/Unit#" + unit + ".png";
-                    singlePlot.ChartImage.SaveImage(filename, ChartImageFormat.Png);
-                }
+                var singlePlot = new SinglePlot(x, y, spec, i, plots.Spc[i]);
+
+                string filename = OUTPUTPATH + "/Unit#" + unit + ".png";
+                singlePlot.ChartImage.SaveImage(filename, ChartImageFormat.Png);
             }
 
-            MultiPlot multiPlot = new MultiPlot(xm, ym, specm, plots.Spc[1]);
+            var multiPlot = new MultiPlot(xm, ym, specm, plots.Spc[1]);
 
-            string filenameMulty = "D:\\Plots/AllUnits.png";
-            multiPlot.ChartImage.SaveImage(filenameMulty, ChartImageFormat.Png);
+            string filenameMulti = OUTPUTPATH + "/AllUnits.png";
+            multiPlot.ChartImage.SaveImage(filenameMulti, ChartImageFormat.Png);
         }
     }
 }
