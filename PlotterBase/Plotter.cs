@@ -7,8 +7,8 @@ namespace PlotterBase
     {
         public static void PreparePlots(Parser.Plots plots)
         {
-            const string OUTPUTPATH = "D:\\Plots";
-            var outputDirectory = new DirectoryInfo(@OUTPUTPATH);
+            string outputPath = FileReader.WorkingDirectory + "\\Plots";
+            var outputDirectory = new DirectoryInfo(outputPath);
             outputDirectory.Create();
 
             string[] xm = new string[20];
@@ -40,13 +40,13 @@ namespace PlotterBase
 
                 var singlePlot = new SinglePlot(x, y, spec, i, plots.Spc[i]);
 
-                string filename = OUTPUTPATH + "/Unit#" + unit + ".png";
+                string filename = outputPath + "/Unit#" + unit + ".png";
                 singlePlot.ChartImage.SaveImage(filename, ChartImageFormat.Png);
             }
 
             var multiPlot = new MultiPlot(xm, ym, specm, plots.Spc[1]);
 
-            string filenameMulti = OUTPUTPATH + "/AllUnits.png";
+            string filenameMulti = outputPath + "/AllUnits.png";
             multiPlot.ChartImage.SaveImage(filenameMulti, ChartImageFormat.Png);
         }
     }
