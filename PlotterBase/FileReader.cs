@@ -1,33 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
-//using Plotter1;
+using System.Windows.Forms;
 
 namespace PlotterBase
 {
-    class FileReader
+    static class FileReader
     {
-       public static string[] Read()
-        {
-            string[] readEveryLine = {};
-            string pathToFile = "";
+       public static string WorkingDirectory;
+
+       public static string[] ReadFile()
+       {
+            string[] readLines = {};
 
             try
             {
                 string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
 
-                Regex regex = new Regex("[0-9]{4}" + ".txt", RegexOptions.IgnoreCase);
+                var regex = new Regex("[0-9]{4}" + ".txt", RegexOptions.IgnoreCase);
 
                 var files = Directory.GetFiles(folder).Where(f => regex.IsMatch(f));
 
-                pathToFile = files.First();
+                string pathToFile = files.First();
 
-                readEveryLine = File.ReadAllLines(pathToFile);
+                readLines = File.ReadAllLines(pathToFile);
+
+                WorkingDirectory = folder;
             }
             catch (Exception e)
             {
@@ -36,7 +37,7 @@ namespace PlotterBase
                 Console.ReadKey(true);
             }
 
-            return readEveryLine;
+            return readLines;
         }
     }
 }
