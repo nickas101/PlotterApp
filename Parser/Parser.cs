@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Parser
 {
-    public class Parser
+    public static class Parser
     {
+        /*
+         * Takes an array of the lines are read from the input file
+         * Creates arrays of temperature, frequency etc.
+         * Returns an object of Plots that has arrays of temperature, frequency etc. as properties
+         */
         public static Plots Parse(string[] lines)
         {
-            bool to_read = false;
+            bool toRead = false;
             int unit = 0;
             int row = 0;
             string[] spc = new string[20];
@@ -20,7 +25,7 @@ namespace Parser
             string[,] spec = new string[20, 50]; // spec limit array
             string specTemp = "";
 
-            for (int i = 0; i < lines.Length; i++)
+            for (var i = 0; i < lines.Length; i++)
             {
                 lines[i] = lines[i].Replace("<", "");
                 lines[i] = lines[i].Replace("FAIL", " ");
@@ -48,9 +53,9 @@ namespace Parser
                 }
 
                 if (lines[i].Contains("Worst") == true)
-                    to_read = false;
+                    toRead = false;
 
-                if (lines[i].Length > 0 && to_read == true)
+                if (lines[i].Length > 0 && toRead == true)
                 {
                     string[] digs = lines[i].Split(new char[] { ' ' });
                     temp[unit, row] = digs[0];
@@ -62,11 +67,11 @@ namespace Parser
                 }
 
                 if (lines[i].Contains("(ppm/'C)") == true)
-                    to_read = true;
+                    toRead = true;
                     spc[unit] = specTemp;
             }
 
-            Plots thePlots = new Plots(temp, freq, over, spec, spc);
+            var thePlots = new Plots(temp, freq, over, spec, spc);
 
             return thePlots;
         }
