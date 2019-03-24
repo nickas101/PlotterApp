@@ -10,6 +10,12 @@ namespace PlotterBase
     {
        public static string WorkingDirectory;
 
+       /*
+        * Try to read file from the current folder
+        * returns array of read lines
+        * if not successful - throw an exception
+        * TODO: if not successful - a dialog window to choose another file
+        */
        public static string[] ReadFile()
        {
             string[] readLines = {};
